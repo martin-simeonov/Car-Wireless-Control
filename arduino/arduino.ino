@@ -7,11 +7,11 @@
 Servo myservo;
 
 // Motor 2
-int dir1 = 5; // Forward mode
-int dir2 = 3; // Back mode
+int forward = 11; // Forward mode
+int back = 3; // Back mode
 int leftHeadlight = 7;
-int rightHeadlight = 8;
-int leftStop = 2;
+int rightHeadlight = 6;
+int leftStop = 5;
 int rightStop = 4;
 int speed = 50;
 
@@ -25,8 +25,8 @@ void setup() {
   // Start our connection
   Serial.begin(115200);
   Bridge.begin();
-  pinMode(dir1,OUTPUT);
-  pinMode(dir2,OUTPUT);
+  pinMode(forward,OUTPUT);
+  pinMode(back,OUTPUT);
   pinMode(leftHeadlight, OUTPUT);
   pinMode(rightHeadlight, OUTPUT);
   pinMode(leftStop, OUTPUT);
@@ -65,7 +65,7 @@ void process(String command) {
   Serial.println("command: " + command);
   
   if (command == "forward") {
-    analogWrite(dir1,speed);
+    analogWrite(forward,speed);
     digitalWrite(leftStop, LOW);
     digitalWrite(rightStop, LOW);
   }
@@ -79,14 +79,14 @@ void process(String command) {
   }
   
   if (command == "back") {
-    analogWrite(dir2,speed);
+    analogWrite(back,speed);
     digitalWrite(leftStop, LOW);
     digitalWrite(rightStop, LOW);
   }
   
   if (command == "stop") {
-    digitalWrite(dir1,LOW);
-    digitalWrite(dir2,LOW);
+    digitalWrite(forward,LOW);
+    digitalWrite(back,LOW);
     digitalWrite(leftStop, HIGH);
     digitalWrite(rightStop, HIGH);
   }

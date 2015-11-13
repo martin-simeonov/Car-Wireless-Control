@@ -67,8 +67,8 @@ public class InteractiveControlActivity extends AppCompatActivity implements Sen
         float z = event.values[2];
 
         // Acceleration
-        if (Math.abs(x) > 1) {
-            MovementService.setSpeed((int) (Math.abs(x) * 10));
+        if (Math.abs(x) > 2) {
+            MovementService.setSpeed((int) (Math.abs(x) * 20));
             if (x < 0) {
                 MovementService.forward();
                 forward.setColorFilter(Color.RED, PorterDuff.Mode.LIGHTEN);

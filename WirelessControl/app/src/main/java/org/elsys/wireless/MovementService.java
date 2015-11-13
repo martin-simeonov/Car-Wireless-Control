@@ -64,15 +64,15 @@ public class MovementService {
     }
 
     public static void stop() {
-        if (!stop) {
+        //if (!stop) {
+            System.out.println("Command: stop");
             if (netService.isConnected()) {
-                System.out.println("Command: stop");
                 netService.write("stop\n");
                 forward = false;
                 back = false;
                 stop = true;
             }
-        }
+       // }
     }
 
     public static void straight() {
